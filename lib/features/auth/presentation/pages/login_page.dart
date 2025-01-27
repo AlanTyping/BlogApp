@@ -2,27 +2,25 @@ import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
-import 'login_page.dart';
+import 'signup_page.dart';
 
-class SignUpPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static route() => MaterialPageRoute(
-        builder: (context) => const SignUpPage(),
+        builder: (context) => const LoginPage(),
       );
-  const SignUpPage({super.key});
+  const LoginPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  final nameController = TextEditingController();
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -33,7 +31,6 @@ class _SignUpPageState extends State<SignUpPage> {
     //formKey.currentState!.validate();
 
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15), // Aquí se puede agregar const
         child: Form(
@@ -43,20 +40,14 @@ class _SignUpPageState extends State<SignUpPage> {
             children: [
               const Text(
                 // Agregamos const porque el texto y su estilo no cambiarán
-                'Sign Up.',
+                'Sign In.',
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
-                  height:
-                      30), // Usamos const porque las dimensiones son constantes
-              AuthField(
-                hintText: 'Name',
-                controller: nameController,
-              ), // AuthField tiene parámetros constantes
-              const SizedBox(height: 15),
+                  height: 30), // Usamos const porque las dimensiones son const
               AuthField(
                 hintText: 'Email',
                 controller: emailController,
@@ -69,19 +60,19 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               const SizedBox(height: 20),
               const AuthGradientButton(
-                text: "Sign up",
+                text: "Sign in",
               ), // Agregamos const si el botón no tiene parámetros dinámicos
               const SizedBox(height: 20),
               GestureDetector(
-                onTap: () => {
+                onTap: () {
                   Navigator.push(
                     context,
-                    LoginPage.route(),
-                  ),
+                    SignUpPage.route(),
+                  );
                 },
                 child: RichText(
                   text: TextSpan(
-                    text: "Already have an account? ",
+                    text: "Don't have an account? ",
                     style: Theme.of(context).textTheme.titleMedium,
                     children: [
                       TextSpan(

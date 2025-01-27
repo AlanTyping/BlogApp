@@ -1,5 +1,6 @@
 import 'package:blog_app/core/theme/theme.dart';
 import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
+import 'package:blog_app/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,8 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Debbug App',
+        title: 'Keep going',
         theme: AppTheme.darkThemeMode,
-        home: const SignUpPage());
+        home: const LoginPage());
   }
 }
